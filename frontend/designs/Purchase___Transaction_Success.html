@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Transaction Success - Strata</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary-fixed-variant": "#3f465c",
+                        "tertiary": "#bec6e0",
+                        "inverse-primary": "#732ee4",
+                        "surface": "#051424",
+                        "outline-variant": "#4a4455",
+                        "tertiary-fixed-dim": "#bec6e0",
+                        "surface-tint": "#d2bbff",
+                        "tertiary-container": "#5e667d",
+                        "surface-variant": "#273647",
+                        "on-secondary-fixed-variant": "#005047",
+                        "inverse-on-surface": "#233143",
+                        "primary-fixed-dim": "#d2bbff",
+                        "on-primary-container": "#ede0ff",
+                        "on-error": "#690005",
+                        "secondary-fixed": "#62fae3",
+                        "on-error-container": "#ffdad6",
+                        "surface-container-highest": "#273647",
+                        "error": "#ffb4ab",
+                        "background": "#051424",
+                        "surface-dim": "#051424",
+                        "surface-container-lowest": "#010f1f",
+                        "on-surface": "#d4e4fa",
+                        "secondary": "#44e2cd",
+                        "tertiary-fixed": "#dae2fd",
+                        "surface-container": "#122131",
+                        "primary-container": "#7c3aed",
+                        "on-tertiary-fixed": "#131b2e",
+                        "surface-container-high": "#1c2b3c",
+                        "on-secondary-container": "#004d44",
+                        "secondary-fixed-dim": "#3cddc7",
+                        "primary-fixed": "#eaddff",
+                        "secondary-container": "#03c6b2",
+                        "on-secondary": "#003731",
+                        "surface-container-low": "#0d1c2d",
+                        "on-surface-variant": "#ccc3d8",
+                        "error-container": "#93000a",
+                        "on-tertiary-container": "#dee5ff",
+                        "surface-bright": "#2c3a4c",
+                        "on-primary": "#3f008e",
+                        "on-primary-fixed": "#25005a",
+                        "on-secondary-fixed": "#00201c",
+                        "outline": "#958da1",
+                        "primary": "#d2bbff",
+                        "inverse-surface": "#d4e4fa",
+                        "on-tertiary": "#283044",
+                        "on-background": "#d4e4fa",
+                        "on-primary-fixed-variant": "#5a00c6"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "max-width": "1440px",
+                        "margin-desktop": "64px",
+                        "gutter": "24px",
+                        "margin-mobile": "16px",
+                        "unit": "4px"
+                    },
+                    "fontFamily": {
+                        "caption": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "display-lg-mobile": ["Inter"],
+                        "label-mono": ["JetBrains Mono"],
+                        "display-lg": ["Inter"],
+                        "body-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "caption": ["12px", { "lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "500" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "display-lg-mobile": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "label-mono": ["14px", { "lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "500" }],
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            background-color: theme('colors.background');
+            color: theme('colors.on-background');
+            font-family: 'Inter', sans-serif;
+        }
+        
+        /* Glassmorphism Utilities */
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            border-left: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .brand-gradient {
+            background: linear-gradient(135deg, theme('colors.primary') 0%, theme('colors.secondary') 100%);
+        }
+        
+        .brand-text-gradient {
+            background: linear-gradient(135deg, theme('colors.primary') 0%, theme('colors.secondary') 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Success Animation */
+        @keyframes scaleIn {
+            0% { transform: scale(0.8); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        
+        @keyframes slideUp {
+            0% { transform: translateY(20px); opacity: 0; }
+            100% { transform: translateY(0); opacity: 1; }
+        }
+
+        .animate-scale-in {
+            animation: scaleIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+        
+        .animate-slide-up {
+            animation: slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+        
+        .delay-100 { animation-delay: 100ms; }
+        .delay-200 { animation-delay: 200ms; }
+        .delay-300 { animation-delay: 300ms; }
+        
+        /* Subtle ambient background glow */
+        .ambient-glow {
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(68, 226, 205, 0.08) 0%, rgba(5, 20, 36, 0) 70%);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: -1;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex items-center justify-center p-4 md:p-margin-desktop relative overflow-hidden">
+<!-- Ambient Background Glow -->
+<div class="ambient-glow"></div>
+<!-- Main Success Card -->
+<main class="w-full max-w-[600px] glass-panel rounded-xl p-8 md:p-12 flex flex-col items-center text-center animate-scale-in">
+<!-- Success Icon -->
+<div class="w-24 h-24 rounded-full bg-secondary/10 flex items-center justify-center mb-8 relative">
+<div class="absolute inset-0 rounded-full border-2 border-secondary/30 animate-[ping_2s_cubic-bezier(0,0,0.2,1)_infinite]"></div>
+<span class="material-symbols-outlined text-[48px] text-secondary" style="font-variation-settings: 'FILL' 1;">
+                check_circle
+            </span>
+</div>
+<!-- Heading -->
+<h1 class="font-display-lg text-display-lg md:text-display-lg-mobile text-on-surface mb-2 animate-slide-up delay-100">
+            NFT Successfully Purchased!
+        </h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-10 animate-slide-up delay-100">
+            Your transaction has been confirmed on the blockchain.
+        </p>
+<!-- Transaction Summary Bento Box -->
+<div class="w-full bg-surface-container-high/50 rounded-lg border border-white/5 p-6 mb-10 text-left animate-slide-up delay-200">
+<!-- Item Info -->
+<div class="flex items-center gap-4 mb-6 pb-6 border-b border-white/10">
+<div class="w-16 h-16 rounded-lg overflow-hidden bg-surface-container-lowest">
+<img alt="Purchased NFT" class="w-full h-full object-cover" data-alt="A highly detailed digital artwork of a futuristic cybernetic character profile, glowing neon accents, deep slate background, high contrast, sharp details, reflecting a premium dark-mode Web3 aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCASwUOdE3C3DQ2PESCav1FcaTjRBtsc-JrgdLH6V89soTw48BYWHIQ_3RQUwZOGmC9CNAuoCsKk5aa9yQysKlu9cWmtdkOrYMz4ifUg0NbVyhvDVG25Xmv2wO4dMmaABHv2FMc3iVj96tIdKyil5mxbtl8_j7piIij_3Bs7ioGmMKh85llOIjnp02zVisd3qhJvYkS9HbRVjgDst9lPpxs_QDmDGGl6poCLABPWQZDQdU5jbx9NTD0Lriad70kOgxD0tA4CIyWOQ"/>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-1">Cyber Samurai #042</h3>
+<p class="font-caption text-caption text-on-surface-variant">by NeoTokyo Labs</p>
+</div>
+</div>
+<!-- Details Grid -->
+<div class="grid grid-cols-2 gap-y-4 gap-x-8">
+<div>
+<p class="font-caption text-caption text-on-surface-variant mb-1">Amount Paid</p>
+<p class="font-label-mono text-label-mono text-on-surface">2.5 ETH</p>
+</div>
+<div>
+<p class="font-caption text-caption text-on-surface-variant mb-1">Network Fee</p>
+<p class="font-label-mono text-label-mono text-on-surface-variant">0.015 ETH</p>
+</div>
+<div>
+<p class="font-caption text-caption text-on-surface-variant mb-1">Status</p>
+<div class="inline-flex items-center gap-1.5 bg-secondary/10 px-2 py-1 rounded-full">
+<div class="w-2 h-2 rounded-full bg-secondary"></div>
+<span class="font-caption text-caption text-secondary">Confirmed</span>
+</div>
+</div>
+<div>
+<p class="font-caption text-caption text-on-surface-variant mb-1">Transaction ID</p>
+<a class="font-label-mono text-label-mono text-primary hover:text-primary-fixed transition-colors flex items-center gap-1 group" href="#">
+                        0x7a...4f2b
+                        <span class="material-symbols-outlined text-[16px] group-hover:translate-x-0.5 transition-transform" data-icon="open_in_new">open_in_new</span>
+</a>
+</div>
+</div>
+</div>
+<!-- Action Buttons -->
+<div class="w-full flex flex-col md:flex-row gap-4 animate-slide-up delay-300">
+<button class="flex-1 py-3 px-6 rounded-lg brand-gradient text-white font-body-md text-body-md font-semibold hover:opacity-90 transition-opacity flex items-center justify-center gap-2">
+<span class="material-symbols-outlined" data-icon="grid_view">grid_view</span>
+                View in Collection
+            </button>
+<button class="flex-1 py-3 px-6 rounded-lg border border-outline-variant bg-surface-container/50 hover:bg-surface-container-high transition-colors font-body-md text-body-md text-on-surface flex items-center justify-center gap-2">
+<span class="material-symbols-outlined" data-icon="storefront">storefront</span>
+                Back to Marketplace
+            </button>
+</div>
+</main>
+</body></html>

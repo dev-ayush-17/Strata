@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Strata | Premium NFT Marketplace</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind Configuration -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                "secondary-fixed": "#62fae3",
+                "surface-container-highest": "#273647",
+                "outline": "#958da1",
+                "on-surface-variant": "#ccc3d8",
+                "secondary": "#44e2cd",
+                "on-surface": "#d4e4fa",
+                "on-tertiary-container": "#dee5ff",
+                "on-error": "#690005",
+                "tertiary-fixed": "#dae2fd",
+                "secondary-container": "#03c6b2",
+                "error-container": "#93000a",
+                "on-tertiary-fixed": "#131b2e",
+                "on-tertiary-fixed-variant": "#3f465c",
+                "on-primary-fixed": "#25005a",
+                "on-secondary-fixed": "#00201c",
+                "on-background": "#d4e4fa",
+                "background": "#051424",
+                "surface": "#051424",
+                "tertiary-fixed-dim": "#bec6e0",
+                "surface-container-high": "#1c2b3c",
+                "surface-container-low": "#0d1c2d",
+                "on-secondary-fixed-variant": "#005047",
+                "tertiary-container": "#5e667d",
+                "surface-container-lowest": "#010f1f",
+                "inverse-primary": "#732ee4",
+                "on-error-container": "#ffdad6",
+                "on-primary-container": "#ede0ff",
+                "inverse-surface": "#d4e4fa",
+                "outline-variant": "#4a4455",
+                "surface-tint": "#d2bbff",
+                "error": "#ffb4ab",
+                "primary-fixed-dim": "#d2bbff",
+                "surface-dim": "#051424",
+                "secondary-fixed-dim": "#3cddc7",
+                "primary-fixed": "#eaddff",
+                "inverse-on-surface": "#233143",
+                "on-tertiary": "#283044",
+                "on-primary": "#3f008e",
+                "on-primary-fixed-variant": "#5a00c6",
+                "surface-variant": "#273647",
+                "on-secondary": "#003731",
+                "primary-container": "#7c3aed",
+                "tertiary": "#bec6e0",
+                "surface-container": "#122131",
+                "surface-bright": "#2c3a4c",
+                "primary": "#d2bbff",
+                "on-secondary-container": "#004d44"
+            },
+            "borderRadius": {
+                "DEFAULT": "0.25rem",
+                "lg": "0.5rem",
+                "xl": "0.75rem",
+                "full": "9999px"
+            },
+            "spacing": {
+                "unit": "4px",
+                "max-width": "1440px",
+                "margin-desktop": "64px",
+                "margin-mobile": "16px",
+                "gutter": "24px"
+            },
+            "fontFamily": {
+                "body-lg": ["Inter"],
+                "display-lg": ["Inter"],
+                "body-md": ["Inter"],
+                "label-mono": ["JetBrains Mono"],
+                "headline-md": ["Inter"],
+                "caption": ["Inter"]
+            },
+            "fontSize": {
+                "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                "label-mono": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                "caption": ["12px", {"lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "500"}]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+        body {
+            background-color: #051424;
+            color: #d4e4fa;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.1);
+        }
+        .hero-gradient {
+            background: radial-gradient(circle at 50% -20%, #3f008e 0%, #051424 70%);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .animate-pulse-slow {
+            animation: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: .7; }
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-surface/80 backdrop-blur-xl border-b border-white/10 shadow-sm flex justify-between items-center px-margin-desktop py-4 max-w-max-width mx-auto left-0 right-0">
+<div class="flex items-center gap-8">
+<span class="font-display-lg text-display-lg tracking-tighter text-primary">Strata</span>
+<div class="hidden md:flex gap-6">
+<a class="font-body-md text-body-md text-primary border-b-2 border-primary pb-1" href="#">Explore</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-on-surface transition-colors" href="#">Create</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-on-surface transition-colors" href="#">Collections</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-on-surface transition-colors" href="#">Community</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative hidden lg:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input class="bg-surface-container-low border border-white/10 rounded-full py-2 pl-10 pr-4 text-body-md focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all w-64" placeholder="Search assets..." type="text"/>
+</div>
+<button class="bg-primary text-on-primary font-body-md text-body-md px-6 py-2.5 rounded-full hover:bg-primary-container transition-all active:scale-95">
+                Connect Wallet
+            </button>
+</div>
+</nav>
+<main class="pt-32">
+<!-- Hero Section -->
+<section class="hero-gradient px-margin-desktop min-h-[819px] flex flex-col lg:flex-row items-center justify-between gap-16 mb-24">
+<div class="flex-1 space-y-8">
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary font-label-mono text-label-mono">
+<span class="relative flex h-2 w-2">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-secondary opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-secondary"></span>
+</span>
+                    LIVE AUCTION
+                </div>
+<h1 class="font-display-lg text-6xl lg:text-8xl text-on-surface leading-tight">
+                    Collect the <br/><span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">Future of Art</span>
+</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-xl">
+                    Experience the next generation of digital asset trading on Strata. Curated high-fidelity NFTs with institutional-grade security and seamless liquidity.
+                </p>
+<div class="flex gap-4">
+<button class="bg-primary text-on-primary font-headline-md text-headline-md px-10 py-4 rounded-xl hover:shadow-[0_0_30px_rgba(210,187,255,0.3)] transition-all">
+                        Explore Now
+                    </button>
+<button class="glass-card text-on-surface font-headline-md text-headline-md px-10 py-4 rounded-xl hover:bg-white/10 transition-all">
+                        Create
+                    </button>
+</div>
+</div>
+<!-- Featured NFT Card -->
+<div class="flex-1 w-full max-w-lg">
+<div class="glass-card rounded-3xl overflow-hidden p-4 group">
+<div class="relative aspect-square rounded-2xl overflow-hidden mb-6">
+<img class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700" data-alt="A cinematic, high-fidelity 3D digital sculpture of a floating iridescent geometric heart, surrounded by suspended crystalline shards. The lighting is dramatic with violet and indigo hues reflecting off polished glass surfaces. The style is ultra-modern, dark mode aesthetic, leaning into a premium gallery presentation with soft atmospheric smoke in the background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC9ChZpFCxylvGHh91pj0yu5uoRuRvkdGXNZQuoaCwqU6cST-xlNKS9a7_pGIjKIJ1yNS3I_utLoaMJ4b27EtNJPgk_gzsaWvQWH2gj07_AlIiQEJBTg0Hw8X0MXtQ_9S6nhv8qivi69pdUJqbewvpadbf34RlrPkKLu2hpDRKsy6_8wh8Desb5V09wwU_meIVo8Pfiz2pvM9aoK5wlaVNdMOy6l7ppJfz2uizA1r-QtVr6c7QV2dE7Kd81bnAyHl2UggKZ7E25rg"/>
+<div class="absolute top-4 right-4 glass-card px-4 py-2 rounded-full font-label-mono text-label-mono">
+                            08h : 42m : 12s
+                        </div>
+</div>
+<div class="flex justify-between items-end px-2">
+<div>
+<p class="font-label-mono text-label-mono text-secondary-fixed mb-1 uppercase tracking-widest">Featured Drop</p>
+<h3 class="font-headline-md text-headline-md text-on-surface">Ethereal Symmetry #04</h3>
+<div class="flex items-center gap-2 mt-3">
+<div class="w-8 h-8 rounded-full bg-surface-container-highest overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A professional close-up portrait of a digital artist with a futuristic aesthetic. Soft rim lighting in blue tones, minimalist dark clothing, against a blurred studio background. High-quality editorial photography style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDV8NTETSxqWggLhQJ38CaIYiDHi7o_YYiG61aRqCeq6Umni9ll9lLhXbqO7ZqUn3E0Qznp7Cr98BFbkxCOJ1ADA2amYA5uZV-Jtv0YCaSkJwYIk-9pKt-1l85mZldMShresUx9Ft7nju7yaQWxXf8PAZxUPL0G0xjmP_b1Nc2W2VsEo-FpnTv86cL2ST_FZ7D08yqXCizCJo_W4Qox3Q3Mh2H-v7Cf5j19ALQOfdxZGPa5NdzaGI1jo1PfyzbkuV-VlQY-xZVgPg"/>
+</div>
+<span class="font-body-md text-body-md text-on-surface-variant">@AetherStudio</span>
+</div>
+</div>
+<div class="text-right">
+<p class="font-caption text-caption text-on-surface-variant uppercase">Current Bid</p>
+<p class="font-label-mono text-2xl text-primary">12.45 ETH</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Stats Section -->
+<section class="px-margin-desktop mb-32">
+<div class="grid grid-cols-2 md:grid-cols-4 gap-gutter">
+<div class="glass-card p-8 rounded-2xl text-center">
+<p class="font-display-lg text-4xl text-on-surface mb-2">420K+</p>
+<p class="font-body-md text-on-surface-variant">Total Volume</p>
+</div>
+<div class="glass-card p-8 rounded-2xl text-center">
+<p class="font-display-lg text-4xl text-on-surface mb-2">1.2M</p>
+<p class="font-body-md text-on-surface-variant">Unique Owners</p>
+</div>
+<div class="glass-card p-8 rounded-2xl text-center">
+<p class="font-display-lg text-4xl text-on-surface mb-2">8.5 ETH</p>
+<p class="font-body-md text-on-surface-variant">Floor Price</p>
+</div>
+<div class="glass-card p-8 rounded-2xl text-center">
+<p class="font-display-lg text-4xl text-on-surface mb-2">150+</p>
+<p class="font-body-md text-on-surface-variant">Top Artists</p>
+</div>
+</div>
+</section>
+<!-- Benefits Grid -->
+<section class="px-margin-desktop mb-32">
+<div class="flex flex-col md:flex-row justify-between items-end gap-6 mb-12">
+<div>
+<h2 class="font-display-lg text-display-lg text-on-surface mb-4">The Strata Advantage</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-xl">Building the foundations for the next era of digital ownership with institutional-grade tech.</p>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<div class="glass-card p-10 rounded-3xl group hover:border-primary/50 transition-all">
+<div class="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center mb-8 text-primary group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-3xl">verified_user</span>
+</div>
+<h4 class="font-headline-md text-headline-md mb-4">Immutable Security</h4>
+<p class="font-body-md text-on-surface-variant">Every transaction is verified through our proprietary multi-layered security protocol, ensuring your assets are always safe.</p>
+</div>
+<div class="glass-card p-10 rounded-3xl group hover:border-secondary/50 transition-all">
+<div class="w-14 h-14 rounded-2xl bg-secondary/10 flex items-center justify-center mb-8 text-secondary group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-3xl">high_quality</span>
+</div>
+<h4 class="font-headline-md text-headline-md mb-4">High-Fidelity Assets</h4>
+<p class="font-body-md text-on-surface-variant">Support for uncompressed 8K textures and lossless audio files. Present your work exactly as it was intended to be seen.</p>
+</div>
+<div class="glass-card p-10 rounded-3xl group hover:border-tertiary/50 transition-all">
+<div class="w-14 h-14 rounded-2xl bg-tertiary/10 flex items-center justify-center mb-8 text-tertiary group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-3xl">speed</span>
+</div>
+<h4 class="font-headline-md text-headline-md mb-4">Instant Liquidity</h4>
+<p class="font-body-md text-on-surface-variant">Advanced order matching and cross-chain bridging allow for near-instant swaps and exit liquidity on all listed collections.</p>
+</div>
+</div>
+</section>
+<!-- How It Works (Bento Layout) -->
+<section class="px-margin-desktop mb-32">
+<h2 class="font-display-lg text-display-lg text-on-surface mb-12 text-center">Seamless Participation</h2>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter h-auto md:h-[600px]">
+<!-- For Collectors -->
+<div class="md:col-span-7 glass-card rounded-3xl p-12 flex flex-col justify-between relative overflow-hidden">
+<div class="relative z-10">
+<span class="font-label-mono text-label-mono text-primary mb-4 block uppercase tracking-tighter">Phase 01 — Collectors</span>
+<h3 class="font-display-lg text-4xl mb-6">Discovery &amp; Acquisition</h3>
+<ul class="space-y-4 max-w-sm">
+<li class="flex gap-4 items-start">
+<span class="w-6 h-6 rounded-full bg-primary/20 flex items-center justify-center text-primary text-xs shrink-0 mt-1">1</span>
+<p class="font-body-md text-on-surface-variant">Connect your preferred wallet via our secure gateway.</p>
+</li>
+<li class="flex gap-4 items-start">
+<span class="w-6 h-6 rounded-full bg-primary/20 flex items-center justify-center text-primary text-xs shrink-0 mt-1">2</span>
+<p class="font-body-md text-on-surface-variant">Explore curated collections from verified global artists.</p>
+</li>
+<li class="flex gap-4 items-start">
+<span class="w-6 h-6 rounded-full bg-primary/20 flex items-center justify-center text-primary text-xs shrink-0 mt-1">3</span>
+<p class="font-body-md text-on-surface-variant">Place bids or 'Buy Now' to instantly secure your asset.</p>
+</li>
+</ul>
+</div>
+<div class="absolute -right-20 -bottom-20 w-80 h-80 bg-primary/20 blur-[100px] rounded-full"></div>
+</div>
+<!-- For Creators -->
+<div class="md:col-span-5 bg-primary-container rounded-3xl p-12 flex flex-col justify-between text-on-primary-container group cursor-pointer overflow-hidden">
+<div>
+<span class="font-label-mono text-label-mono mb-4 block uppercase tracking-tighter opacity-80">Phase 02 — Creators</span>
+<h3 class="font-display-lg text-4xl mb-6">Minting &amp; Distribution</h3>
+<p class="font-body-md opacity-90">Upload your work, set your royalties, and reach a global audience of high-net-worth collectors in minutes.</p>
+</div>
+<div class="mt-8">
+<div class="flex items-center gap-2 group-hover:gap-4 transition-all duration-300">
+<span class="font-headline-md text-headline-md">Start Minting</span>
+<span class="material-symbols-outlined">arrow_forward</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- CTA Section -->
+<section class="px-margin-desktop mb-32">
+<div class="glass-card rounded-[48px] p-16 text-center relative overflow-hidden">
+<div class="absolute inset-0 opacity-20 pointer-events-none">
+
+</div>
+<div class="relative z-10 max-w-2xl mx-auto">
+<h2 class="font-display-lg text-5xl mb-6">Ready to Step into the Stratosphere?</h2>
+<p class="font-body-lg text-on-surface-variant mb-10">Join thousands of collectors and artists shaping the future of digital ownership. No hidden fees, just pure creation.</p>
+<div class="flex flex-col sm:flex-row justify-center gap-4">
+<button class="bg-secondary text-on-secondary font-headline-md text-headline-md px-12 py-5 rounded-2xl hover:shadow-[0_0_40px_rgba(68,226,205,0.4)] transition-all">
+                            Connect Wallet
+                        </button>
+<button class="glass-card text-on-surface font-headline-md text-headline-md px-12 py-5 rounded-2xl hover:bg-white/10 transition-all">
+                            View Roadmap
+                        </button>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-lowest w-full py-margin-desktop border-t border-white/10 px-margin-desktop grid grid-cols-1 md:grid-cols-4 gap-gutter">
+<div class="flex flex-col gap-6">
+<span class="font-display-lg text-display-lg text-on-surface">Strata</span>
+<p class="font-caption text-caption text-on-surface-variant">The world's first high-fidelity NFT marketplace designed for professional collectors and institutional grade digital assets.</p>
+<div class="flex gap-4">
+<a class="w-10 h-10 rounded-full glass-card flex items-center justify-center hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-lg">public</span>
+</a>
+<a class="w-10 h-10 rounded-full glass-card flex items-center justify-center hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-lg">chat</span>
+</a>
+<a class="w-10 h-10 rounded-full glass-card flex items-center justify-center hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-lg">camera</span>
+</a>
+</div>
+</div>
+<div class="flex flex-col gap-4">
+<h5 class="font-headline-md text-headline-md text-on-surface">Marketplace</h5>
+<a class="font-caption text-caption text-on-surface-variant hover:text-secondary-fixed transition-colors" href="#">All NFTs</a>
+<a class="font-caption text-caption text-on-surface-variant hover:text-secondary-fixed transition-colors" href="#">Art</a>
+<a class="font-caption text-caption text-on-surface-variant hover:text-secondary-fixed transition-colors" href="#">Gaming</a>
+<a class="font-caption text-caption text-on-surface-variant hover:text-secondary-fixed transition-colors" href="#">Collections</a>
+</div>
+<div class="flex flex-col gap-4">
+<h5 class="font-headline-md text-headline-md text-on-surface">Resources</h5>
+<a class="font-caption text-caption text-on-surface-variant hover:text-secondary-fixed transition-colors" href="#">Help Center</a>
+<a class="font-caption text-caption text-on-surface-variant hover:text-secondary-fixed transition-colors" href="#">API Docs</a>
+<a class="font-caption text-caption text-on-surface-variant hover:text-secondary-fixed transition-colors" href="#">Terms of Service</a>
+<a class="font-caption text-caption text-on-surface-variant hover:text-secondary-fixed transition-colors" href="#">Privacy Policy</a>
+</div>
+<div class="flex flex-col gap-6">
+<h5 class="font-headline-md text-headline-md text-on-surface">Newsletter</h5>
+<p class="font-caption text-caption text-on-surface-variant">Stay updated with the latest drops and features.</p>
+<div class="flex gap-2">
+<input class="bg-surface-container-high border-none rounded-xl font-caption text-caption px-4 py-3 w-full focus:ring-1 focus:ring-primary" placeholder="Email address" type="email"/>
+<button class="bg-primary text-on-primary p-3 rounded-xl hover:opacity-80 transition-opacity">
+<span class="material-symbols-outlined">send</span>
+</button>
+</div>
+<p class="font-caption text-caption text-on-surface-variant/60 mt-4">© 2024 Strata NFT Marketplace. All rights reserved.</p>
+</div>
+</footer>
+<script>
+        // Simple scroll interaction for the Nav Bar
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 20) {
+                nav.classList.add('py-2');
+                nav.classList.remove('py-4');
+            } else {
+                nav.classList.add('py-4');
+                nav.classList.remove('py-2');
+            }
+        });
+    </script>
+</body></html>

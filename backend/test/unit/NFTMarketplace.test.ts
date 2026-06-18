@@ -104,6 +104,42 @@ describe("NFTMarketplace", function () {
         })
 
         it(
+            "Reverts if NFT is not approved for marketplace",
+            async function () {
+                await nft.mintNft(TOKEN_URI)
+
+                await expect(
+                    marketplace.listItem(
+                        nftAddress,
+                        TOKEN_ID,
+                        PRICE
+                    )
+                ).to.be.revertedWithCustomError(
+                    marketplace,
+                    "NotApprovedForMarketplace"
+                )
+            }
+        )
+
+        it(
+            "Reverts if item is already listed",
+            async function () {
+                await mintApproveAndList()
+
+                await expect(
+                    marketplace.listItem(
+                        nftAddress,
+                        TOKEN_ID,
+                        PRICE
+                    )
+                ).to.be.revertedWithCustomError(
+                    marketplace,
+                    "AlreadyListed"
+                )
+            }
+        )
+
+        it(
             "Lists NFT and stores listing information",
             async function () {
                 await mintAndApprove()
@@ -145,6 +181,52 @@ describe("NFTMarketplace", function () {
 
     describe("buyItem", function () {
         it(
+            "Reverts if item is not listed",
+            async function () {
+                await nft.mintNft(TOKEN_URI)
+
+                await expect(
+                    marketplace
+                        .connect(buyer)
+                        .buyItem(
+                            nftAddress,
+                            TOKEN_ID,
+                            {
+                                value: PRICE,
+                            }
+                        )
+                ).to.be.revertedWithCustomError(
+                    marketplace,
+                    "ItemNotListed"
+                )
+            }
+        )
+
+        it(
+            "Reverts if price is not met",
+            async function () {
+                await mintApproveAndList()
+
+                await expect(
+                    marketplace
+                        .connect(buyer)
+                        .buyItem(
+                            nftAddress,
+                            TOKEN_ID,
+                            {
+                                value: ethers.parseEther(
+                                    "0.5"
+                                ),
+                            }
+                        )
+                ).to.be.revertedWithCustomError(
+                    marketplace,
+                    "PriceNotMet"
+                )
+            }
+        )
+
+        it(
             "Transfers ownership and credits proceeds",
             async function () {
                 await mintApproveAndList()
@@ -172,6 +254,66 @@ describe("NFTMarketplace", function () {
                         await seller.getAddress()
                     )
                 ).to.equal(PRICE)
+            }
+        )
+
+        it(
+            "Emits ItemBought event",
+            async function () {
+                await mintApproveAndList()
+
+                await expect(
+                    marketplace
+                        .connect(buyer)
+                        .buyItem(
+                            nftAddress,
+                            TOKEN_ID,
+                            {
+                                value: PRICE,
+                            }
+                        )
+                )
+                    .to.emit(
+                        marketplace,
+                        "ItemBought"
+                    )
+                    .withArgs(
+                        await buyer.getAddress(),
+                        nftAddress,
+                        TOKEN_ID,
+                        PRICE
+                    )
+            }
+        )
+
+        it(
+            "Deletes listing after purchase",
+            async function () {
+                await mintApproveAndList()
+
+                await marketplace
+                    .connect(buyer)
+                    .buyItem(
+                        nftAddress,
+                        TOKEN_ID,
+                        {
+                            value: PRICE,
+                        }
+                    )
+
+                const listing =
+                    await marketplace.getListing(
+                        nftAddress,
+                        TOKEN_ID
+                    )
+
+                expect(listing.price)
+                    .to.equal(0)
+
+                expect(listing.seller)
+                    .to.equal(
+                        ethers.ZeroAddress
+                    )
             }
         )
     })

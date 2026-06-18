@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Vanguard Pulse #01 - Strata</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary-fixed-variant": "#3f465c",
+                        "tertiary": "#bec6e0",
+                        "inverse-primary": "#732ee4",
+                        "surface": "#051424",
+                        "outline-variant": "#4a4455",
+                        "tertiary-fixed-dim": "#bec6e0",
+                        "surface-tint": "#d2bbff",
+                        "tertiary-container": "#5e667d",
+                        "surface-variant": "#273647",
+                        "on-secondary-fixed-variant": "#005047",
+                        "inverse-on-surface": "#233143",
+                        "primary-fixed-dim": "#d2bbff",
+                        "on-primary-container": "#ede0ff",
+                        "on-error": "#690005",
+                        "secondary-fixed": "#62fae3",
+                        "on-error-container": "#ffdad6",
+                        "surface-container-highest": "#273647",
+                        "error": "#ffb4ab",
+                        "background": "#051424",
+                        "surface-dim": "#051424",
+                        "surface-container-lowest": "#010f1f",
+                        "on-surface": "#d4e4fa",
+                        "secondary": "#44e2cd",
+                        "tertiary-fixed": "#dae2fd",
+                        "surface-container": "#122131",
+                        "primary-container": "#7c3aed",
+                        "on-tertiary-fixed": "#131b2e",
+                        "surface-container-high": "#1c2b3c",
+                        "on-secondary-container": "#004d44",
+                        "secondary-fixed-dim": "#3cddc7",
+                        "primary-fixed": "#eaddff",
+                        "secondary-container": "#03c6b2",
+                        "on-secondary": "#003731",
+                        "surface-container-low": "#0d1c2d",
+                        "on-surface-variant": "#ccc3d8",
+                        "error-container": "#93000a",
+                        "on-tertiary-container": "#dee5ff",
+                        "surface-bright": "#2c3a4c",
+                        "on-primary": "#3f008e",
+                        "on-primary-fixed": "#25005a",
+                        "on-secondary-fixed": "#00201c",
+                        "outline": "#958da1",
+                        "primary": "#d2bbff",
+                        "inverse-surface": "#d4e4fa",
+                        "on-tertiary": "#283044",
+                        "on-background": "#d4e4fa",
+                        "on-primary-fixed-variant": "#5a00c6"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "max-width": "1440px",
+                        "margin-desktop": "64px",
+                        "gutter": "24px",
+                        "margin-mobile": "16px",
+                        "unit": "4px"
+                    },
+                    "fontFamily": {
+                        "caption": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "display-lg-mobile": ["Inter"],
+                        "label-mono": ["JetBrains Mono"],
+                        "display-lg": ["Inter"],
+                        "body-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "caption": ["12px", { "lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "500" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "display-lg-mobile": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "label-mono": ["14px", { "lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "500" }],
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            border-left: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .text-gradient {
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-image: linear-gradient(90deg, #d2bbff, #44e2cd);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md antialiased selection:bg-primary-container selection:text-on-primary-container min-h-screen flex flex-col">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 flex justify-between items-center px-margin-mobile md:px-margin-desktop py-4 max-w-max-width mx-auto bg-surface/80 backdrop-blur-xl border-b border-white/10 shadow-sm transition-all duration-300">
+<div class="flex items-center gap-8">
+<a class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg tracking-tighter text-primary" href="#">Strata</a>
+<div class="hidden md:flex items-center gap-6">
+<a class="text-on-surface-variant hover:text-on-surface transition-colors font-body-md text-body-md hover:bg-white/5 px-3 py-2 rounded-lg" href="#">Explore</a>
+<a class="text-on-surface-variant hover:text-on-surface transition-colors font-body-md text-body-md hover:bg-white/5 px-3 py-2 rounded-lg" href="#">Create</a>
+<a class="text-on-surface-variant hover:text-on-surface transition-colors font-body-md text-body-md hover:bg-white/5 px-3 py-2 rounded-lg" href="#">Collections</a>
+<a class="text-on-surface-variant hover:text-on-surface transition-colors font-body-md text-body-md hover:bg-white/5 px-3 py-2 rounded-lg" href="#">Community</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative hidden md:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input class="bg-surface-container-high border border-outline-variant rounded-full py-2 pl-10 pr-4 text-on-surface focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary w-64 transition-all" placeholder="Search NFTs..." type="text"/>
+</div>
+<button class="bg-primary-container hover:bg-primary text-on-primary-container font-body-md text-body-md px-6 py-2 rounded-full transition-all duration-300 active:scale-95 shadow-[0_0_15px_rgba(124,58,237,0.3)] hover:shadow-[0_0_25px_rgba(124,58,237,0.5)]">Connect Wallet</button>
+</div>
+</nav>
+<!-- Main Content -->
+<main class="flex-grow pt-32 pb-margin-desktop px-margin-mobile md:px-margin-desktop max-w-max-width mx-auto w-full">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+<!-- Left Column: Media -->
+<div class="lg:col-span-7 flex flex-col gap-gutter">
+<!-- NFT Image Container -->
+<div class="glass-panel rounded-xl overflow-hidden relative group aspect-square flex items-center justify-center p-6">
+<img class="w-full h-full object-contain rounded-lg shadow-2xl transition-transform duration-700 group-hover:scale-[1.02]" data-alt="A highly detailed, vibrant digital artwork titled 'Vanguard Pulse #01'. The piece features a central, abstract neon heart constructed from glowing, geometric lines and pulsing light energy, set against a deep slate and charcoal background. The style is premium Web3 refined glassmorphism, with sharp contrasts and subtle atmospheric depth. The lighting is high-end studio quality, emphasizing the luminescent neon colors—vibrant violet, electric teal, and neon pink. The mood is cutting-edge, technical, and emotionally resonant, perfectly suited for a high-value NFT marketplace." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCM1ZJpNKAv8i8k6DjtMB5LcGdGX8lhx2XBuQjVmzleYdXSVF2lKEhkss-slH_9HaXvsfRsKYxYVOMoKQrs4tpfI6sBg5hbKvwo-q8fbOEkKi5X3uuo5KnT8LGN4BiOaP-rudOBXnu1Rhfotysk_PAZHlSfI6jv1E51sR5lhY1kK2DIROSOlTPhj7w_qcxUO-WdZKK7JG-2nlI68Mck5YmS7nk1YjGNPg_F5RtR4ErM6PwgV-nstnWckWX0Eeq7816fH20x9kIS9A"/>
+<div class="absolute top-4 right-4 flex gap-2">
+<button aria-label="Like" class="bg-surface-container/80 backdrop-blur-md p-2 rounded-full hover:bg-surface-bright transition-colors text-on-surface flex items-center justify-center">
+<span class="material-symbols-outlined text-body-lg">favorite</span>
+</button>
+<button aria-label="Share" class="bg-surface-container/80 backdrop-blur-md p-2 rounded-full hover:bg-surface-bright transition-colors text-on-surface flex items-center justify-center">
+<span class="material-symbols-outlined text-body-lg">share</span>
+</button>
+</div>
+</div>
+<!-- Description Card -->
+<div class="glass-panel rounded-xl p-8">
+<h3 class="font-headline-md text-headline-md mb-4 text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">subject</span> Description
+                    </h3>
+<p class="font-body-lg text-body-lg text-on-surface-variant leading-relaxed">
+                        Vanguard Pulse #01 is the genesis piece of the highly anticipated Vanguard Series. This artwork captures the raw, pulsating energy of digital sentience awakening within the metaverse. Forged through a complex blend of generative algorithms and hand-crafted neon lighting passes, it stands as a testament to the intersection of human emotion and machine precision.
+                    </p>
+</div>
+</div>
+<!-- Right Column: Details & Actions -->
+<div class="lg:col-span-5 flex flex-col gap-gutter">
+<!-- Primary Info Card -->
+<div class="glass-panel rounded-xl p-8 flex flex-col gap-6">
+<div>
+<div class="flex items-center gap-2 mb-2 text-primary font-label-mono text-label-mono uppercase tracking-wider">
+                            Vanguard Series <span class="material-symbols-outlined text-[16px] text-secondary">verified</span>
+</div>
+<h1 class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg text-on-surface mb-2">Vanguard Pulse #01</h1>
+<div class="flex items-center gap-4 text-on-surface-variant font-body-md text-body-md">
+<span>Owned by <a class="text-primary hover:text-primary-fixed transition-colors" href="#">0x7a...9f2b</a></span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">visibility</span> 1.2k views</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">favorite</span> 342 favorites</span>
+</div>
+</div>
+<!-- Price Box -->
+<div class="bg-surface-container-high rounded-lg p-6 border border-outline-variant/30 flex flex-col gap-4">
+<div class="text-on-surface-variant font-caption text-caption uppercase tracking-wider">Current Price</div>
+<div class="flex items-end gap-3">
+<span class="font-label-mono text-label-mono text-display-lg-mobile text-on-surface leading-none">2.5 ETH</span>
+<span class="font-body-md text-body-md text-on-surface-variant mb-1">($4,625.50)</span>
+</div>
+<div class="flex gap-4 mt-2">
+<button class="flex-1 bg-gradient-to-r from-primary-container to-secondary-container hover:from-primary hover:to-secondary text-on-primary-container font-headline-md text-headline-md py-4 rounded-xl transition-all duration-300 active:scale-95 shadow-lg flex items-center justify-center gap-2">
+<span class="material-symbols-outlined">account_balance_wallet</span> Buy Now
+                            </button>
+<button class="flex-1 bg-transparent border-2 border-outline-variant hover:border-primary text-on-surface font-headline-md text-headline-md py-4 rounded-xl transition-all duration-300 active:scale-95 flex items-center justify-center gap-2">
+<span class="material-symbols-outlined">local_offer</span> Make Offer
+                            </button>
+</div>
+</div>
+</div>
+<!-- Attributes Card -->
+<div class="glass-panel rounded-xl p-8">
+<h3 class="font-headline-md text-headline-md mb-6 text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary">label</span> Properties
+                    </h3>
+<div class="grid grid-cols-2 gap-4">
+<div class="bg-surface-container rounded-lg p-4 border border-outline-variant/30 hover:border-secondary/50 transition-colors text-center">
+<div class="font-caption text-caption text-secondary uppercase tracking-wider mb-1">Core</div>
+<div class="font-headline-md text-[18px] text-on-surface">Neon Heart</div>
+<div class="font-caption text-caption text-on-surface-variant mt-1">12% have this trait</div>
+</div>
+<div class="bg-surface-container rounded-lg p-4 border border-outline-variant/30 hover:border-primary/50 transition-colors text-center">
+<div class="font-caption text-caption text-primary uppercase tracking-wider mb-1">Vibe</div>
+<div class="font-headline-md text-[18px] text-on-surface">Cybernetic</div>
+<div class="font-caption text-caption text-on-surface-variant mt-1">8% have this trait</div>
+</div>
+<div class="bg-surface-container rounded-lg p-4 border border-outline-variant/30 hover:border-error/50 transition-colors text-center">
+<div class="font-caption text-caption text-error uppercase tracking-wider mb-1">Rarity</div>
+<div class="font-headline-md text-[18px] text-on-surface">Epic</div>
+<div class="font-caption text-caption text-on-surface-variant mt-1">2% have this trait</div>
+</div>
+</div>
+</div>
+<!-- History / Activity -->
+<div class="glass-panel rounded-xl p-8 flex flex-col gap-4">
+<h3 class="font-headline-md text-headline-md text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-tertiary">history</span> Activity
+                    </h3>
+<div class="flex flex-col gap-4 max-h-64 overflow-y-auto pr-2 custom-scrollbar">
+<div class="flex items-center justify-between p-3 rounded-lg hover:bg-surface-container-high transition-colors">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary bg-primary-container/20 p-2 rounded-full">sell</span>
+<div>
+<div class="font-body-md text-body-md text-on-surface">Listed</div>
+<div class="font-caption text-caption text-on-surface-variant">by <a class="text-primary hover:underline" href="#">Creator</a></div>
+</div>
+</div>
+<div class="text-right">
+<div class="font-label-mono text-label-mono text-on-surface">2.5 ETH</div>
+<div class="font-caption text-caption text-on-surface-variant">2 hours ago</div>
+</div>
+</div>
+<div class="flex items-center justify-between p-3 rounded-lg hover:bg-surface-container-high transition-colors">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary bg-secondary-container/20 p-2 rounded-full">auto_awesome</span>
+<div>
+<div class="font-body-md text-body-md text-on-surface">Minted</div>
+<div class="font-caption text-caption text-on-surface-variant">by <a class="text-primary hover:underline" href="#">Creator</a></div>
+</div>
+</div>
+<div class="text-right">
+<div class="font-caption text-caption text-on-surface-variant">1 day ago</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-lowest border-t border-white/10 py-margin-desktop mt-auto">
+<div class="w-full px-margin-mobile md:px-margin-desktop grid grid-cols-1 md:grid-cols-4 gap-gutter max-w-max-width mx-auto">
+<div class="col-span-1">
+<div class="font-display-lg text-[32px] font-bold text-on-surface mb-4">Strata</div>
+<div class="font-caption text-caption text-on-surface-variant">© 2024 Strata NFT Marketplace. All rights reserved.</div>
+</div>
+<div class="flex flex-col gap-3">
+<a class="font-caption text-caption text-on-surface-variant hover:text-secondary-fixed transition-colors hover:opacity-80" href="#">Privacy Policy</a>
+</div>
+<div class="flex flex-col gap-3">
+<a class="font-caption text-caption text-on-surface-variant hover:text-secondary-fixed transition-colors hover:opacity-80" href="#">Terms of Service</a>
+</div>
+<div class="flex flex-col gap-3">
+<a class="font-caption text-caption text-on-surface-variant hover:text-secondary-fixed transition-colors hover:opacity-80" href="#">Help Center</a>
+<a class="font-caption text-caption text-on-surface-variant hover:text-secondary-fixed transition-colors hover:opacity-80" href="#">API Docs</a>
+</div>
+</div>
+</footer>
+<style>
+        /* Custom Scrollbar for activity section */
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+    </style>
+</body></html>

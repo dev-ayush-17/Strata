@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Create Listing - Strata</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary-fixed-variant": "#3f465c",
+                        "tertiary": "#bec6e0",
+                        "inverse-primary": "#732ee4",
+                        "surface": "#051424",
+                        "outline-variant": "#4a4455",
+                        "tertiary-fixed-dim": "#bec6e0",
+                        "surface-tint": "#d2bbff",
+                        "tertiary-container": "#5e667d",
+                        "surface-variant": "#273647",
+                        "on-secondary-fixed-variant": "#005047",
+                        "inverse-on-surface": "#233143",
+                        "primary-fixed-dim": "#d2bbff",
+                        "on-primary-container": "#ede0ff",
+                        "on-error": "#690005",
+                        "secondary-fixed": "#62fae3",
+                        "on-error-container": "#ffdad6",
+                        "surface-container-highest": "#273647",
+                        "error": "#ffb4ab",
+                        "background": "#051424",
+                        "surface-dim": "#051424",
+                        "surface-container-lowest": "#010f1f",
+                        "on-surface": "#d4e4fa",
+                        "secondary": "#44e2cd",
+                        "tertiary-fixed": "#dae2fd",
+                        "surface-container": "#122131",
+                        "primary-container": "#7c3aed",
+                        "on-tertiary-fixed": "#131b2e",
+                        "surface-container-high": "#1c2b3c",
+                        "on-secondary-container": "#004d44",
+                        "secondary-fixed-dim": "#3cddc7",
+                        "primary-fixed": "#eaddff",
+                        "secondary-container": "#03c6b2",
+                        "on-secondary": "#003731",
+                        "surface-container-low": "#0d1c2d",
+                        "on-surface-variant": "#ccc3d8",
+                        "error-container": "#93000a",
+                        "on-tertiary-container": "#dee5ff",
+                        "surface-bright": "#2c3a4c",
+                        "on-primary": "#3f008e",
+                        "on-primary-fixed": "#25005a",
+                        "on-secondary-fixed": "#00201c",
+                        "outline": "#958da1",
+                        "primary": "#d2bbff",
+                        "inverse-surface": "#d4e4fa",
+                        "on-tertiary": "#283044",
+                        "on-background": "#d4e4fa",
+                        "on-primary-fixed-variant": "#5a00c6"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "max-width": "1440px",
+                        "margin-desktop": "64px",
+                        "gutter": "24px",
+                        "margin-mobile": "16px",
+                        "unit": "4px"
+                    },
+                    "fontFamily": {
+                        "caption": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "display-lg-mobile": ["Inter"],
+                        "label-mono": ["JetBrains Mono"],
+                        "display-lg": ["Inter"],
+                        "body-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "caption": ["12px", {"lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "display-lg-mobile": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "label-mono": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            background-color: #051424;
+            color: #d4e4fa;
+        }
+        
+        /* Refined Glassmorphism Utility Classes */
+        .glass-panel {
+            background-color: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            border-left: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .brand-gradient {
+            background: linear-gradient(135deg, #d2bbff 0%, #7c3aed 100%);
+        }
+        
+        .brand-text-gradient {
+            background: linear-gradient(135deg, #d2bbff 0%, #7c3aed 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        
+        /* Custom Input styling for dark mode */
+        input[type="text"], input[type="number"] {
+            background-color: #0F172A;
+            border: 1px solid #4a4455;
+            color: #d4e4fa;
+        }
+        
+        input[type="text"]:focus, input[type="number"]:focus {
+            border-image: linear-gradient(135deg, #d2bbff 0%, #7c3aed 100%) 1;
+            box-shadow: 0 0 0 1px #7c3aed;
+            outline: none;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col font-body-md text-body-md antialiased overflow-x-hidden selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopNavBar (Excluded as this is a linear/transactional flow based on rules) -->
+<header class="w-full z-50 flex justify-between items-center px-margin-desktop py-4 max-w-max-width mx-auto border-b border-white/5 relative">
+<div class="flex items-center gap-4">
+<a class="font-display-lg text-[24px] font-bold tracking-tighter text-primary" href="#">Strata</a>
+</div>
+<button class="text-on-surface-variant hover:text-on-surface transition-colors flex items-center gap-2">
+<span class="font-label-mono text-label-mono">Cancel</span>
+<span class="material-symbols-outlined">close</span>
+</button>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-grow flex flex-col items-center justify-center py-margin-desktop px-gutter lg:px-margin-desktop max-w-max-width mx-auto w-full relative">
+<!-- Ambient Glow Background -->
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/5 rounded-full blur-[120px] pointer-events-none -z-10"></div>
+<div class="w-full max-w-5xl">
+<div class="mb-12">
+<h1 class="font-display-lg text-display-lg-mobile md:text-display-lg text-on-surface mb-2">Create Listing</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant">Set a price to list your asset on the marketplace.</p>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-gutter">
+<!-- Left Column: NFT Preview -->
+<div class="lg:col-span-5 flex flex-col gap-6">
+<h2 class="font-headline-md text-headline-md text-on-surface">Asset Preview</h2>
+<div class="glass-panel rounded-xl overflow-hidden p-6 flex flex-col gap-6 shadow-sm">
+<!-- Image Container (Zero-border approach) -->
+<div class="w-full aspect-square rounded-lg overflow-hidden bg-surface-container-high relative">
+<img alt="NFT Artwork Preview" class="w-full h-full object-cover" data-alt="A striking digital artwork featuring a surreal, hyper-detailed chrome sphere floating above a desolate, dark obsidian landscape. The scene is illuminated by an ethereal, deep purple neon glow from an unseen light source, casting long, sharp shadows. The aesthetic is premium Web3 dark mode, blending high-end 3D rendering with a slightly melancholic, cyberpunk atmosphere. The overall mood is mysterious and highly valuable." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA8zA0mTvJy-MRnAqaSHXfvL4HAvgkfz1PL_C5xSa4-EIcF1Pz__fjXQjvvnyFCQB0xhta1nqDyd3MU-vSUWx1xGJzJqJgxiIWTTugtvxNsXYxJhiQM7cW7euAePZ0y72cFr0TcD2vx0-sRAgZeKPPgGCvwziiIHdwDt8vpRIqPg7BOdKSlQuF59FvsQXLoHC8GHEffpX7cG8ACCwDCUUh9JbkPzH4SmMpe_9-2XfgzW_UUbSBTVO7UrYUsFTYTfdkDQji4T51MaA"/>
+<div class="absolute top-4 left-4">
+<span class="bg-surface/80 backdrop-blur-md font-label-mono text-label-mono text-primary px-3 py-1 rounded-full border border-white/10">Owned by You</span>
+</div>
+</div>
+<!-- Asset Details -->
+<div class="flex flex-col gap-2">
+<div class="flex justify-between items-start">
+<div>
+<p class="font-caption text-caption text-on-surface-variant uppercase tracking-widest">Ethereal Constructs</p>
+<h3 class="font-headline-md text-headline-md text-on-surface mt-1">Obsidian Void #042</h3>
+</div>
+<div class="text-right">
+<p class="font-caption text-caption text-on-surface-variant">Last Sale</p>
+<p class="font-label-mono text-label-mono text-secondary mt-1 flex items-center justify-end gap-1">
+<svg class="text-secondary" fill="none" height="18" viewbox="0 0 12 18" width="12" xmlns="http://www.w3.org/2000/svg">
+<path d="M5.99992 0L5.86792 0.449065V12.1837L5.99992 12.3155L11.9998 8.76612L5.99992 0Z" fill="currentColor"></path>
+<path d="M5.99992 0L0 8.76612L5.99992 12.3155V7.12782V0Z" fill="currentColor" fill-opacity="0.8"></path>
+<path d="M5.99992 13.3402L5.92502 13.4316V17.7788L5.99992 17.9999L12.0003 9.7915L5.99992 13.3402Z" fill="currentColor"></path>
+<path d="M5.99992 17.9999V13.3402L0 9.7915L5.99992 17.9999Z" fill="currentColor" fill-opacity="0.8"></path>
+</svg>
+                                        2.5
+                                    </p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Column: Listing Form -->
+<div class="lg:col-span-7 flex flex-col gap-8">
+<div class="flex flex-col gap-6">
+<!-- Pricing Type (Tabs) -->
+<div class="flex p-1 bg-surface-container-low rounded-lg border border-white/5 w-max">
+<button class="px-6 py-2 rounded-md bg-surface-container-highest text-on-surface font-label-mono text-label-mono shadow-sm transition-all duration-200">Fixed Price</button>
+<button class="px-6 py-2 rounded-md text-on-surface-variant hover:text-on-surface hover:bg-white/5 font-label-mono text-label-mono transition-all duration-200">Timed Auction</button>
+</div>
+<!-- Price Input -->
+<div class="flex flex-col gap-2">
+<label class="font-caption text-caption text-on-surface-variant" for="price">Set Price</label>
+<div class="relative w-full">
+<div class="absolute inset-y-0 left-0 flex items-center pl-4 pointer-events-none">
+<svg class="text-on-surface-variant" fill="none" height="24" viewbox="0 0 12 18" width="16" xmlns="http://www.w3.org/2000/svg">
+<path d="M5.99992 0L5.86792 0.449065V12.1837L5.99992 12.3155L11.9998 8.76612L5.99992 0Z" fill="currentColor"></path>
+<path d="M5.99992 0L0 8.76612L5.99992 12.3155V7.12782V0Z" fill="currentColor" fill-opacity="0.8"></path>
+<path d="M5.99992 13.3402L5.92502 13.4316V17.7788L5.99992 17.9999L12.0003 9.7915L5.99992 13.3402Z" fill="currentColor"></path>
+<path d="M5.99992 17.9999V13.3402L0 9.7915L5.99992 17.9999Z" fill="currentColor" fill-opacity="0.8"></path>
+</svg>
+</div>
+<input class="w-full bg-[#0F172A] border border-outline-variant rounded-lg py-4 pl-12 pr-16 text-display-lg-mobile font-bold text-on-surface focus:ring-primary focus:border-primary transition-all duration-300" id="price" min="0" placeholder="0.00" step="0.01" type="number"/>
+<div class="absolute inset-y-0 right-0 flex items-center pr-4 pointer-events-none">
+<span class="font-label-mono text-label-mono text-on-surface-variant">ETH</span>
+</div>
+</div>
+<p class="font-caption text-caption text-on-surface-variant mt-1">~ $0.00 USD</p>
+</div>
+<!-- Duration -->
+<div class="flex flex-col gap-2">
+<label class="font-caption text-caption text-on-surface-variant" for="duration">Duration</label>
+<div class="relative w-full">
+<select class="appearance-none w-full bg-[#0F172A] border border-outline-variant rounded-lg py-3 px-4 font-body-md text-on-surface focus:ring-primary focus:border-primary transition-all duration-300 cursor-pointer" id="duration">
+<option value="1">1 Day</option>
+<option value="3">3 Days</option>
+<option selected="" value="7">7 Days</option>
+<option value="30">1 Month</option>
+</select>
+<div class="absolute inset-y-0 right-0 flex items-center pr-4 pointer-events-none text-on-surface-variant">
+<span class="material-symbols-outlined">expand_more</span>
+</div>
+</div>
+</div>
+</div>
+<hr class="border-white/5 my-2"/>
+<!-- Fees Summary -->
+<div class="flex flex-col gap-4">
+<h3 class="font-caption text-caption text-on-surface-variant uppercase tracking-widest">Summary</h3>
+<div class="glass-panel rounded-lg p-5 flex flex-col gap-4">
+<div class="flex justify-between items-center">
+<span class="font-body-md text-on-surface-variant">Listing Price</span>
+<span class="font-label-mono text-label-mono text-on-surface">-- ETH</span>
+</div>
+<div class="flex justify-between items-center">
+<div class="flex items-center gap-2">
+<span class="font-body-md text-on-surface-variant">Service Fee</span>
+<span class="material-symbols-outlined text-[16px] text-on-surface-variant cursor-help" title="Strata marketplace fee">info</span>
+</div>
+<span class="font-label-mono text-label-mono text-on-surface">2.5%</span>
+</div>
+<div class="flex justify-between items-center">
+<div class="flex items-center gap-2">
+<span class="font-body-md text-on-surface-variant">Creator Royalty</span>
+<span class="material-symbols-outlined text-[16px] text-on-surface-variant cursor-help" title="Fee set by the original creator">info</span>
+</div>
+<span class="font-label-mono text-label-mono text-on-surface">5.0%</span>
+</div>
+<hr class="border-white/5 my-2"/>
+<div class="flex justify-between items-center">
+<span class="font-headline-md text-headline-md text-on-surface">Potential Earnings</span>
+<span class="font-label-mono text-label-mono text-primary font-bold">-- ETH</span>
+</div>
+</div>
+</div>
+<!-- Action Button -->
+<div class="mt-4">
+<button class="w-full brand-gradient text-white font-headline-md text-[18px] py-4 px-8 rounded-lg hover:opacity-90 transition-opacity active:scale-[0.98] shadow-[0_0_20px_rgba(124,58,237,0.3)]">
+                            Confirm Listing
+                        </button>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer (Excluded per instruction for linear flows, but keeping a simplified minimal version to anchor the page bottom if needed, otherwise rely on canvas) -->
+<script>
+        // Simple micro-interaction for ETH input calculation
+        const priceInput = document.getElementById('price');
+        const usdConversion = 3100; // Mock conversion rate
+        const usdLabel = priceInput.parentElement.nextElementSibling;
+        const potentialEarningsEl = document.querySelector('.glass-panel .text-primary.font-bold');
+        const listingPriceEl = document.querySelector('.glass-panel .justify-between:first-child .text-on-surface');
+
+        priceInput.addEventListener('input', (e) => {
+            const val = parseFloat(e.target.value);
+            if (!isNaN(val) && val > 0) {
+                const usdValue = (val * usdConversion).toLocaleString('en-US', { style: 'currency', currency: 'USD' });
+                usdLabel.textContent = `~ ${usdValue}`;
+                
+                listingPriceEl.textContent = `${val.toFixed(4)} ETH`;
+                
+                // Calculate fees (2.5% + 5.0% = 7.5%)
+                const earnings = val * (1 - 0.075);
+                potentialEarningsEl.textContent = `${earnings.toFixed(4)} ETH`;
+            } else {
+                usdLabel.textContent = `~ $0.00 USD`;
+                listingPriceEl.textContent = `-- ETH`;
+                potentialEarningsEl.textContent = `-- ETH`;
+            }
+        });
+    </script>
+</body></html>

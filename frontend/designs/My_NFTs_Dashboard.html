@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>My NFTs - Strata</title>
+<!-- Fonts & Icons -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-tertiary-fixed-variant": "#3f465c",
+                    "tertiary": "#bec6e0",
+                    "inverse-primary": "#732ee4",
+                    "surface": "#051424",
+                    "outline-variant": "#4a4455",
+                    "tertiary-fixed-dim": "#bec6e0",
+                    "surface-tint": "#d2bbff",
+                    "tertiary-container": "#5e667d",
+                    "surface-variant": "#273647",
+                    "on-secondary-fixed-variant": "#005047",
+                    "inverse-on-surface": "#233143",
+                    "primary-fixed-dim": "#d2bbff",
+                    "on-primary-container": "#ede0ff",
+                    "on-error": "#690005",
+                    "secondary-fixed": "#62fae3",
+                    "on-error-container": "#ffdad6",
+                    "surface-container-highest": "#273647",
+                    "error": "#ffb4ab",
+                    "background": "#051424",
+                    "surface-dim": "#051424",
+                    "surface-container-lowest": "#010f1f",
+                    "on-surface": "#d4e4fa",
+                    "secondary": "#44e2cd",
+                    "tertiary-fixed": "#dae2fd",
+                    "surface-container": "#122131",
+                    "primary-container": "#7c3aed",
+                    "on-tertiary-fixed": "#131b2e",
+                    "surface-container-high": "#1c2b3c",
+                    "on-secondary-container": "#004d44",
+                    "secondary-fixed-dim": "#3cddc7",
+                    "primary-fixed": "#eaddff",
+                    "secondary-container": "#03c6b2",
+                    "on-secondary": "#003731",
+                    "surface-container-low": "#0d1c2d",
+                    "on-surface-variant": "#ccc3d8",
+                    "error-container": "#93000a",
+                    "on-tertiary-container": "#dee5ff",
+                    "surface-bright": "#2c3a4c",
+                    "on-primary": "#3f008e",
+                    "on-primary-fixed": "#25005a",
+                    "on-secondary-fixed": "#00201c",
+                    "outline": "#958da1",
+                    "primary": "#d2bbff",
+                    "inverse-surface": "#d4e4fa",
+                    "on-tertiary": "#283044",
+                    "on-background": "#d4e4fa",
+                    "on-primary-fixed-variant": "#5a00c6"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "max-width": "1440px",
+                    "margin-desktop": "64px",
+                    "gutter": "24px",
+                    "margin-mobile": "16px",
+                    "unit": "4px"
+            },
+            "fontFamily": {
+                    "caption": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "display-lg-mobile": ["Inter"],
+                    "label-mono": ["JetBrains Mono"],
+                    "display-lg": ["Inter"],
+                    "body-md": ["Inter"]
+            },
+            "fontSize": {
+                    "caption": ["12px", { "lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "500" }],
+                    "headline-md": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                    "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                    "display-lg-mobile": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                    "label-mono": ["14px", { "lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "500" }],
+                    "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                    "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface min-h-screen flex flex-col antialiased selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopNavBar -->
+<header class="fixed top-0 w-full z-50 flex justify-between items-center px-margin-desktop py-4 max-w-max-width mx-auto bg-surface/80 backdrop-blur-xl border-b border-white/10 shadow-sm">
+<div class="flex items-center gap-8">
+<a class="font-display-lg text-display-lg tracking-tighter text-primary" href="#">Strata</a>
+<nav class="hidden md:flex items-center gap-6">
+<a class="text-on-surface-variant hover:text-on-surface transition-colors font-body-md text-body-md hover:bg-white/5 transition-all duration-300 px-3 py-2 rounded-lg active:scale-95 transition-transform" href="#">Explore</a>
+<a class="text-on-surface-variant hover:text-on-surface transition-colors font-body-md text-body-md hover:bg-white/5 transition-all duration-300 px-3 py-2 rounded-lg active:scale-95 transition-transform" href="#">Create</a>
+<!-- Active logic applied based on user intent (closest match to personal profile/collection) -->
+<a class="text-primary border-b-2 border-primary pb-1 font-body-md text-body-md hover:bg-white/5 transition-all duration-300 px-3 py-2 rounded-lg active:scale-95 transition-transform" href="#">Collections</a>
+<a class="text-on-surface-variant hover:text-on-surface transition-colors font-body-md text-body-md hover:bg-white/5 transition-all duration-300 px-3 py-2 rounded-lg active:scale-95 transition-transform" href="#">Community</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<div class="hidden lg:flex relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-sm">search</span>
+<input class="bg-surface-container-high border border-white/10 rounded-full py-2 pl-10 pr-4 text-body-md text-on-surface focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all w-64 placeholder:text-on-surface-variant" placeholder="Search NFTs..." type="text"/>
+</div>
+<button class="bg-gradient-to-r from-primary-container to-secondary-container text-white px-6 py-2.5 rounded-full font-body-md text-body-md hover:opacity-90 transition-opacity flex items-center gap-2 shadow-lg shadow-primary-container/20 border border-white/10">
+<span class="relative flex h-2 w-2 mr-1">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-secondary opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-secondary"></span>
+</span>
+                0x8F...3a1B
+            </button>
+</div>
+</header>
+<!-- Main Layout -->
+<main class="flex-1 max-w-max-width w-full mx-auto px-margin-mobile md:px-margin-desktop pt-[120px] pb-margin-desktop flex flex-col lg:flex-row gap-margin-desktop">
+<!-- Sidebar: Profile Stats -->
+<aside class="w-full lg:w-80 flex flex-col gap-6 shrink-0">
+<!-- Profile Card -->
+<div class="bg-surface-container-low/50 backdrop-blur-lg rounded-2xl border border-white/5 p-6 flex flex-col items-center text-center relative overflow-hidden group">
+<div class="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+<div class="w-24 h-24 rounded-full border-2 border-primary/30 p-1 relative mb-4 z-10">
+<img class="w-full h-full rounded-full object-cover" data-alt="A futuristic 3D avatar of a stylized cyberpunk character with glowing neon accents, highly detailed textures, set against a dark studio background with rim lighting, representing a premium Web3 identity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB1RCCl2-hkjYYACASaCnhec2ZKHqPI3vu67cDMuXOWFOKLOWf_VU1DP2rT4W68FRTZ2UA-RG01wNZrNpVM5-qZBhxerYZZyB-MxMlJTEx3yc-ggH4nTN5vTodAj9wmTHcdcHJYJkOWkaGgc9rcgXFTae8ogZq-wQ5iM841FBgvYsN92J0pNO2OUdcfYM89UBEw29sGHtSUCn51mhNdNAKr9ODb2BKkKvTuJyXImb_axVISc4LG2QSPzHWwVJh49hpwvt3xDb6v_A"/>
+<div class="absolute bottom-0 right-0 bg-secondary rounded-full p-1 border-2 border-surface">
+<span class="material-symbols-outlined text-[12px] text-on-secondary" style="font-variation-settings: 'FILL' 1;">verified</span>
+</div>
+</div>
+<h1 class="font-headline-md text-headline-md text-on-surface mb-1 z-10">Vault Master</h1>
+<p class="font-label-mono text-label-mono text-primary z-10">@vault_master.eth</p>
+<div class="flex gap-4 mt-6 z-10">
+<button class="w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center hover:bg-white/10 transition-colors border border-white/5 text-on-surface-variant hover:text-primary">
+<span class="material-symbols-outlined text-lg">share</span>
+</button>
+<button class="w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center hover:bg-white/10 transition-colors border border-white/5 text-on-surface-variant hover:text-primary">
+<span class="material-symbols-outlined text-lg">settings</span>
+</button>
+</div>
+</div>
+<!-- Stats Block -->
+<div class="bg-surface-container-low/50 backdrop-blur-lg rounded-2xl border border-white/5 p-6 flex flex-col gap-6">
+<div class="flex flex-col gap-2">
+<span class="font-caption text-caption text-on-surface-variant uppercase tracking-wider">Total Est. Value</span>
+<div class="flex items-baseline gap-2">
+<span class="font-headline-md text-headline-md text-on-surface">142.50</span>
+<span class="font-label-mono text-label-mono text-primary">ETH</span>
+</div>
+</div>
+<div class="h-px w-full bg-white/5"></div>
+<div class="grid grid-cols-2 gap-4">
+<div class="flex flex-col gap-1">
+<span class="font-caption text-caption text-on-surface-variant">Items Owned</span>
+<span class="font-body-lg text-body-lg text-on-surface">34</span>
+</div>
+<div class="flex flex-col gap-1">
+<span class="font-caption text-caption text-on-surface-variant">Collections</span>
+<span class="font-body-lg text-body-lg text-on-surface">12</span>
+</div>
+<div class="flex flex-col gap-1">
+<span class="font-caption text-caption text-on-surface-variant">Total Listed</span>
+<span class="font-body-lg text-body-lg text-secondary">8</span>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content: NFT Grid -->
+<section class="flex-1 flex flex-col gap-8">
+<!-- Controls / Tabs -->
+<div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+<h2 class="font-headline-md text-headline-md text-on-surface hidden sm:block">My Collection</h2>
+<div class="flex bg-surface-container-low p-1 rounded-lg border border-white/5 w-full sm:w-auto">
+<button class="flex-1 sm:flex-none px-6 py-2 rounded-md bg-surface-container-highest text-on-surface font-label-mono text-label-mono shadow-sm transition-all">All</button>
+<button class="flex-1 sm:flex-none px-6 py-2 rounded-md text-on-surface-variant hover:text-on-surface hover:bg-white/5 font-label-mono text-label-mono transition-all">Listed</button>
+<button class="flex-1 sm:flex-none px-6 py-2 rounded-md text-on-surface-variant hover:text-on-surface hover:bg-white/5 font-label-mono text-label-mono transition-all">Unlisted</button>
+</div>
+<div class="flex items-center gap-2 w-full sm:w-auto">
+<button class="w-full sm:w-auto px-4 py-2 bg-surface-container-low border border-white/10 rounded-lg flex items-center justify-center gap-2 hover:bg-white/5 transition-colors text-on-surface font-body-md text-body-md">
+<span class="material-symbols-outlined text-sm">sort</span>
+                        Recently Added
+                    </button>
+</div>
+</div>
+<!-- Grid -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-4 gap-gutter">
+<!-- NFT Card 1: Listed -->
+<article class="group bg-surface-container/40 backdrop-blur-xl border border-white/10 rounded-2xl overflow-hidden hover:-translate-y-1 hover:shadow-[0_8px_30px_rgb(0,0,0,0.4)] hover:shadow-primary/10 transition-all duration-300 cursor-pointer flex flex-col relative">
+<!-- Status Badge -->
+<div class="absolute top-4 right-4 z-10 px-3 py-1 rounded-full bg-secondary/10 border border-secondary/20 backdrop-blur-md flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-secondary animate-pulse"></span>
+<span class="font-label-mono text-[10px] uppercase tracking-wider text-secondary">Listed</span>
+</div>
+<div class="w-full aspect-square overflow-hidden relative bg-surface-container-lowest">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A mesmerizing abstract digital painting featuring fluid dynamics of deep violet and bright teal merging together in a glass-like texture, set in a dark minimalist void, conveying a sense of premium contemporary digital art." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDyniu42sB1cQwxoTrPflNfhawmulRQ83ToKkiJvLmSYIx0T_tzNgB_tVhQbbksDENSppne4LVmPRI3t-uZkqpxN1nl7roLiVx0YA7G5cQN26-tWHnxxIqSqFuYyp-aIZhb98XCk5eI4YPdHQbuTSN6V3V3LB8R2x26lKCkavcWNC_CIQE-oBZzdigo0nbI877MhQhaeSUQvCUcKAXpL7LR1toaW5GOUxtiz8wVKGDOFSmG7VLfpOJlXhrdTTD_TVF_yzk_pBVXwg"/>
+</div>
+<div class="p-5 flex flex-col gap-3">
+<div>
+<p class="font-caption text-caption text-on-surface-variant mb-1">Ethereal Fluids</p>
+<h3 class="font-body-lg text-body-lg text-on-surface font-semibold truncate">Crystalline Entity #042</h3>
+</div>
+<div class="flex justify-between items-end mt-2">
+<div class="flex flex-col">
+<span class="font-caption text-caption text-on-surface-variant">List Price</span>
+<div class="flex items-center gap-1">
+<span class="font-label-mono text-label-mono text-on-surface">4.5</span>
+<span class="font-label-mono text-caption text-primary">ETH</span>
+</div>
+</div>
+<button class="opacity-0 group-hover:opacity-100 transition-opacity bg-white/10 hover:bg-white/20 border border-white/10 rounded-lg px-3 py-1.5 text-sm font-label-mono text-on-surface">Manage</button>
+</div>
+</div>
+</article>
+<!-- NFT Card 2: Unlisted -->
+<article class="group bg-surface-container/40 backdrop-blur-xl border border-white/10 rounded-2xl overflow-hidden hover:-translate-y-1 hover:shadow-[0_8px_30px_rgb(0,0,0,0.4)] transition-all duration-300 cursor-pointer flex flex-col relative">
+<!-- Status Badge -->
+<div class="absolute top-4 right-4 z-10 px-3 py-1 rounded-full bg-surface-container-high/80 border border-white/10 backdrop-blur-md">
+<span class="font-label-mono text-[10px] uppercase tracking-wider text-on-surface-variant">Unlisted</span>
+</div>
+<div class="w-full aspect-square overflow-hidden relative bg-surface-container-lowest">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A highly detailed 3D render of a futuristic samurai helmet constructed from polished obsidian and brushed titanium, sitting on a stark slate pedestal with dramatic cinematic top-lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD6JvR-9Ci36bP8g9L3L-6QoGbR5KXQmhy1vt8TxE8zo0AneegDfxous3rV-sQ1pVEiewO_2Q6fDOTX8NzdPvIJwEAK77WKaIti5QFfGtt-yZgggXlhDtqx3JosI9WNmTJBaIQyPrLd-8dDz4zQoEIGIs1pdGRBx0ZerP0C882XC9TbbA_yoW9dK5YlH5Fr6TQHXD4e65p5zZqw06lUckXv5dUMxr3Wmg197fgCwA1kkCdqgxUdircCtX6ts_tWTXU7Ov1fIy0wpA"/>
+</div>
+<div class="p-5 flex flex-col gap-3">
+<div>
+<p class="font-caption text-caption text-on-surface-variant mb-1">Neo Ronin</p>
+<h3 class="font-body-lg text-body-lg text-on-surface font-semibold truncate">Obsidian Visor</h3>
+</div>
+<div class="flex justify-between items-end mt-2">
+<div class="flex flex-col">
+<span class="font-caption text-caption text-on-surface-variant">Last Sold</span>
+<div class="flex items-center gap-1">
+<span class="font-label-mono text-label-mono text-on-surface-variant">2.1</span>
+<span class="font-label-mono text-caption text-on-surface-variant">ETH</span>
+</div>
+</div>
+<button class="opacity-0 group-hover:opacity-100 transition-opacity bg-primary-container/20 hover:bg-primary-container/40 text-primary border border-primary/20 rounded-lg px-3 py-1.5 text-sm font-label-mono">List Now</button>
+</div>
+</div>
+</article>
+<!-- NFT Card 3: Listed -->
+<article class="group bg-surface-container/40 backdrop-blur-xl border border-white/10 rounded-2xl overflow-hidden hover:-translate-y-1 hover:shadow-[0_8px_30px_rgb(0,0,0,0.4)] hover:shadow-primary/10 transition-all duration-300 cursor-pointer flex flex-col relative">
+<div class="absolute top-4 right-4 z-10 px-3 py-1 rounded-full bg-secondary/10 border border-secondary/20 backdrop-blur-md flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-secondary animate-pulse"></span>
+<span class="font-label-mono text-[10px] uppercase tracking-wider text-secondary">Listed</span>
+</div>
+<div class="w-full aspect-square overflow-hidden relative bg-surface-container-lowest">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Generative architectural landscape made of floating concrete brutalist structures interlocking in a vast empty dark blue sky, highly precise geometry, subtle glowing edges, architectural visualization style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDvDA1GTF45JzeFHg7KwGFa7gvz0vNACZMRZ22EjJvsa-xFN3Rc3dwt_mF6kcGVv5DS3vNh2IqjChlmDowvglkLAjH4vzCAQMREO3R9xLr25GjJG9rVjYLcBF79Pec7ZZNP1rX-370xg1dh5626i03pS4rYfbsSMRojbSDk6Sk8Ax1HqwFvBsVu6BPRdVvzGjFhxrDC5cYs1rVKkARWoXLyU5vJqsPIEpkvp509xt1TLShrnwvd4XWDStGXY3xob9s0Kg6VGFRloQ"/>
+</div>
+<div class="p-5 flex flex-col gap-3">
+<div>
+<p class="font-caption text-caption text-on-surface-variant mb-1">Void Architecture</p>
+<h3 class="font-body-lg text-body-lg text-on-surface font-semibold truncate">Structure #99</h3>
+</div>
+<div class="flex justify-between items-end mt-2">
+<div class="flex flex-col">
+<span class="font-caption text-caption text-on-surface-variant">List Price</span>
+<div class="flex items-center gap-1">
+<span class="font-label-mono text-label-mono text-on-surface">1.2</span>
+<span class="font-label-mono text-caption text-primary">ETH</span>
+</div>
+</div>
+<button class="opacity-0 group-hover:opacity-100 transition-opacity bg-white/10 hover:bg-white/20 border border-white/10 rounded-lg px-3 py-1.5 text-sm font-label-mono text-on-surface">Manage</button>
+</div>
+</div>
+</article>
+<!-- NFT Card 4: Unlisted -->
+<article class="group bg-surface-container/40 backdrop-blur-xl border border-white/10 rounded-2xl overflow-hidden hover:-translate-y-1 hover:shadow-[0_8px_30px_rgb(0,0,0,0.4)] transition-all duration-300 cursor-pointer flex flex-col relative">
+<div class="absolute top-4 right-4 z-10 px-3 py-1 rounded-full bg-surface-container-high/80 border border-white/10 backdrop-blur-md">
+<span class="font-label-mono text-[10px] uppercase tracking-wider text-on-surface-variant">Unlisted</span>
+</div>
+<div class="w-full aspect-square overflow-hidden relative bg-surface-container-lowest">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A macro photography shot of a synthetic cybernetic eye with complex metallic irises glowing with a soft purple light, set against completely black background, extreme detail, sharp focus." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBabSZ5FYfd4bFtmf3hmMiZOstBgl4nd9krU68sYj8zvo1vm9hCO3As9ISaYYrDj7Dxa2gN4DCNvaXZR7advxh0sNCZzCIV4l7W3awhb4BCPaGf4nzOfnAde7KKaFJRVJRWAtzYTIzNj49d8NMZ6CJ6XhGDoL-eNqLkQ5h859F5nb4Yn9CF-v5wZOD1od5InWdlJNAiSUrMBKzTdcXWaUgs7KqpxmciGhu8SIja4HcB7mEEBHc-c0WczCB7zESDo0K1MjEI_lxicQ"/>
+</div>
+<div class="p-5 flex flex-col gap-3">
+<div>
+<p class="font-caption text-caption text-on-surface-variant mb-1">Synthetic Biology</p>
+<h3 class="font-body-lg text-body-lg text-on-surface font-semibold truncate">Ocular Implant v2</h3>
+</div>
+<div class="flex justify-between items-end mt-2">
+<div class="flex flex-col">
+<span class="font-caption text-caption text-on-surface-variant">Last Sold</span>
+<div class="flex items-center gap-1">
+<span class="font-label-mono text-label-mono text-on-surface-variant">0.8</span>
+<span class="font-label-mono text-caption text-on-surface-variant">ETH</span>
+</div>
+</div>
+<button class="opacity-0 group-hover:opacity-100 transition-opacity bg-primary-container/20 hover:bg-primary-container/40 text-primary border border-primary/20 rounded-lg px-3 py-1.5 text-sm font-label-mono">List Now</button>
+</div>
+</div>
+</article>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full px-margin-desktop py-margin-desktop grid grid-cols-1 md:grid-cols-4 gap-gutter bg-surface-container-lowest border-t border-white/10 mt-auto">
+<div class="col-span-1 md:col-span-1 flex flex-col gap-4">
+<span class="font-display-lg text-display-lg text-on-surface tracking-tighter">Strata</span>
+<p class="font-caption text-caption text-on-surface-variant">© 2024 Strata NFT Marketplace. All rights reserved.</p>
+</div>
+<div class="col-span-1 md:col-span-3 flex justify-end gap-8 items-center flex-wrap">
+<a class="font-caption text-caption text-on-surface-variant hover:text-secondary-fixed transition-colors transition-opacity hover:opacity-80" href="#">Privacy Policy</a>
+<a class="font-caption text-caption text-on-surface-variant hover:text-secondary-fixed transition-colors transition-opacity hover:opacity-80" href="#">Terms of Service</a>
+<a class="font-caption text-caption text-on-surface-variant hover:text-secondary-fixed transition-colors transition-opacity hover:opacity-80" href="#">Help Center</a>
+<a class="font-caption text-caption text-on-surface-variant hover:text-secondary-fixed transition-colors transition-opacity hover:opacity-80" href="#">API Docs</a>
+</div>
+</footer>
+</body></html>

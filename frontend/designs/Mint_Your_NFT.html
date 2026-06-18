@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Mint NFT - Strata</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary-fixed-variant": "#3f465c",
+                        "tertiary": "#bec6e0",
+                        "inverse-primary": "#732ee4",
+                        "surface": "#051424",
+                        "outline-variant": "#4a4455",
+                        "tertiary-fixed-dim": "#bec6e0",
+                        "surface-tint": "#d2bbff",
+                        "tertiary-container": "#5e667d",
+                        "surface-variant": "#273647",
+                        "on-secondary-fixed-variant": "#005047",
+                        "inverse-on-surface": "#233143",
+                        "primary-fixed-dim": "#d2bbff",
+                        "on-primary-container": "#ede0ff",
+                        "on-error": "#690005",
+                        "secondary-fixed": "#62fae3",
+                        "on-error-container": "#ffdad6",
+                        "surface-container-highest": "#273647",
+                        "error": "#ffb4ab",
+                        "background": "#051424",
+                        "surface-dim": "#051424",
+                        "surface-container-lowest": "#010f1f",
+                        "on-surface": "#d4e4fa",
+                        "secondary": "#44e2cd",
+                        "tertiary-fixed": "#dae2fd",
+                        "surface-container": "#122131",
+                        "primary-container": "#7c3aed",
+                        "on-tertiary-fixed": "#131b2e",
+                        "surface-container-high": "#1c2b3c",
+                        "on-secondary-container": "#004d44",
+                        "secondary-fixed-dim": "#3cddc7",
+                        "primary-fixed": "#eaddff",
+                        "secondary-container": "#03c6b2",
+                        "on-secondary": "#003731",
+                        "surface-container-low": "#0d1c2d",
+                        "on-surface-variant": "#ccc3d8",
+                        "error-container": "#93000a",
+                        "on-tertiary-container": "#dee5ff",
+                        "surface-bright": "#2c3a4c",
+                        "on-primary": "#3f008e",
+                        "on-primary-fixed": "#25005a",
+                        "on-secondary-fixed": "#00201c",
+                        "outline": "#958da1",
+                        "primary": "#d2bbff",
+                        "inverse-surface": "#d4e4fa",
+                        "on-tertiary": "#283044",
+                        "on-background": "#d4e4fa",
+                        "on-primary-fixed-variant": "#5a00c6"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "max-width": "1440px",
+                        "margin-desktop": "64px",
+                        "gutter": "24px",
+                        "margin-mobile": "16px",
+                        "unit": "4px"
+                    },
+                    "fontFamily": {
+                        "caption": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "display-lg-mobile": ["Inter"],
+                        "label-mono": ["JetBrains Mono"],
+                        "display-lg": ["Inter"],
+                        "body-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "caption": ["12px", { "lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "500" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "display-lg-mobile": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "label-mono": ["14px", { "lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "500" }],
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            background-color: theme('colors.background');
+            color: theme('colors.on-background');
+            overflow-x: hidden;
+        }
+        /* Custom scrollbar for attribute list if it gets long */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: theme('colors.surface-variant');
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: theme('colors.outline-variant');
+        }
+    </style>
+</head>
+<body class="antialiased min-h-screen flex flex-col relative selection:bg-primary-container selection:text-on-primary-container">
+<!-- Ambient Background Effects (Level 0/1 Depth) -->
+<div class="fixed inset-0 z-0 pointer-events-none overflow-hidden">
+<div class="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-primary/10 rounded-full blur-[120px]"></div>
+<div class="absolute bottom-[-10%] right-[-10%] w-[30%] h-[50%] bg-secondary/10 rounded-full blur-[100px]"></div>
+</div>
+<!-- Minimal Header (Transactional Context - Suppressed Global Nav) -->
+<header class="relative z-50 w-full flex justify-between items-center px-margin-mobile md:px-margin-desktop py-6 max-w-max-width mx-auto border-b border-white/5 bg-surface/50 backdrop-blur-md">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[32px]" data-weight="fill" style="font-variation-settings: 'FILL' 1;">hexagon</span>
+<span class="font-headline-md text-headline-md tracking-tighter text-on-surface">Strata</span>
+</div>
+<button class="flex items-center gap-2 px-4 py-2 rounded-full border border-outline-variant text-on-surface-variant hover:text-on-surface hover:bg-surface-variant transition-colors font-label-mono text-label-mono">
+<span class="material-symbols-outlined text-[18px]">close</span>
+            Cancel Mint
+        </button>
+</header>
+<!-- Main Content Canvas -->
+<main class="relative z-10 flex-grow flex flex-col items-center justify-start pt-12 pb-24 px-margin-mobile md:px-margin-desktop max-w-[1200px] mx-auto w-full gap-12">
+<!-- Header Text -->
+<div class="text-center w-full max-w-2xl">
+<h1 class="font-display-lg text-display-lg-mobile md:text-display-lg text-on-surface mb-4">Create New Asset</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant">Digitize your work on the blockchain. Ensure your assets are high resolution and appropriately formatted.</p>
+</div>
+<!-- Progress Stepper -->
+<div class="w-full max-w-4xl flex items-center justify-between relative mb-8">
+<!-- Connecting Line -->
+<div class="absolute left-0 top-1/2 -translate-y-1/2 w-full h-[2px] bg-surface-variant -z-10"></div>
+<!-- Step 1: Upload (Active) -->
+<div class="flex flex-col items-center gap-3 bg-background px-4">
+<div class="w-12 h-12 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center shadow-[0_0_20px_rgba(124,58,237,0.3)] border border-primary/30">
+<span class="material-symbols-outlined" data-weight="fill" style="font-variation-settings: 'FILL' 1;">cloud_upload</span>
+</div>
+<span class="font-label-mono text-label-mono text-primary">01 Upload</span>
+</div>
+<!-- Step 2: Metadata (Upcoming) -->
+<div class="flex flex-col items-center gap-3 bg-background px-4">
+<div class="w-12 h-12 rounded-full bg-surface-container-high text-on-surface-variant flex items-center justify-center border border-outline-variant">
+<span class="material-symbols-outlined">description</span>
+</div>
+<span class="font-label-mono text-label-mono text-on-surface-variant">02 Metadata</span>
+</div>
+<!-- Step 3: Review (Upcoming) -->
+<div class="flex flex-col items-center gap-3 bg-background px-4">
+<div class="w-12 h-12 rounded-full bg-surface-container-high text-on-surface-variant flex items-center justify-center border border-outline-variant">
+<span class="material-symbols-outlined">visibility</span>
+</div>
+<span class="font-label-mono text-label-mono text-on-surface-variant">03 Review</span>
+</div>
+<!-- Step 4: Mint (Upcoming) -->
+<div class="flex flex-col items-center gap-3 bg-background px-4">
+<div class="w-12 h-12 rounded-full bg-surface-container-high text-on-surface-variant flex items-center justify-center border border-outline-variant">
+<span class="material-symbols-outlined">diamond</span>
+</div>
+<span class="font-label-mono text-label-mono text-on-surface-variant">04 Mint</span>
+</div>
+</div>
+<!-- Glassmorphic Bento Container (Level 1 Depth) -->
+<div class="w-full max-w-6xl grid grid-cols-1 lg:grid-cols-12 gap-gutter p-6 lg:p-8 bg-surface/40 backdrop-blur-2xl rounded-[24px] border border-white/5 shadow-2xl relative overflow-hidden">
+<!-- Inner Glow Top/Left -->
+<div class="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-white/20 to-transparent pointer-events-none"></div>
+<div class="absolute top-0 left-0 w-[1px] h-full bg-gradient-to-b from-white/20 to-transparent pointer-events-none"></div>
+<!-- Left Column: Upload Dropzone -->
+<div class="lg:col-span-5 flex flex-col h-full">
+<div class="relative flex-grow min-h-[400px] lg:min-h-full rounded-xl border-2 border-dashed border-outline-variant hover:border-primary/50 hover:bg-primary/5 transition-all duration-300 flex flex-col items-center justify-center p-8 group cursor-pointer bg-surface-container-lowest/50">
+<div class="w-20 h-20 rounded-full bg-surface-container text-primary flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-500 shadow-lg">
+<span class="material-symbols-outlined text-[40px]">add_photo_alternate</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-2 text-center">Drag &amp; Drop Media</h3>
+<p class="font-body-md text-body-md text-on-surface-variant text-center mb-6">Supports JPG, PNG, GIF, SVG, WEBP, MP4, or MP3. Max size: 100MB.</p>
+<button class="px-6 py-3 rounded-lg bg-surface-variant text-on-surface font-label-mono text-label-mono border border-white/10 group-hover:bg-primary group-hover:text-on-primary transition-colors">
+                        Browse Files
+                    </button>
+<!-- Hidden file input for actual functionality -->
+<input accept="image/*,video/*,audio/*" class="absolute inset-0 w-full h-full opacity-0 cursor-pointer" type="file"/>
+</div>
+</div>
+<!-- Right Column: Metadata Form -->
+<div class="lg:col-span-7 flex flex-col gap-6 p-2 lg:pl-8">
+<!-- Section Header -->
+<div>
+<h2 class="font-headline-md text-headline-md text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]">info</span>
+                        Asset Details
+                    </h2>
+<p class="font-caption text-caption text-on-surface-variant mt-1">This information will be permanently stored on the blockchain.</p>
+</div>
+<!-- Input: Name -->
+<div class="flex flex-col gap-2">
+<label class="font-label-mono text-label-mono text-on-surface-variant flex items-center gap-1">
+                        Name <span class="text-error">*</span>
+</label>
+<input class="w-full bg-surface-container-lowest border border-outline-variant rounded-lg px-4 py-3 font-body-md text-body-md text-on-surface placeholder:text-outline-variant focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all" placeholder="e.g. Genesis Artifact #01" type="text"/>
+</div>
+<!-- Input: Description -->
+<div class="flex flex-col gap-2">
+<label class="font-label-mono text-label-mono text-on-surface-variant">Description</label>
+<textarea class="w-full bg-surface-container-lowest border border-outline-variant rounded-lg px-4 py-3 font-body-md text-body-md text-on-surface placeholder:text-outline-variant focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all resize-none" placeholder="Describe the lore, creation process, or utility of this asset..." rows="4"></textarea>
+</div>
+<!-- Input: Attributes (Dynamic Area) -->
+<div class="flex flex-col gap-3 mt-2">
+<div class="flex justify-between items-end">
+<label class="font-label-mono text-label-mono text-on-surface-variant">Properties / Attributes</label>
+<button class="text-secondary hover:text-secondary-fixed transition-colors font-label-mono text-label-mono flex items-center gap-1" type="button">
+<span class="material-symbols-outlined text-[16px]">add</span> Add Property
+                        </button>
+</div>
+<!-- Attribute Row 1 -->
+<div class="grid grid-cols-12 gap-3 items-center">
+<div class="col-span-5">
+<input class="w-full bg-surface-container-lowest border border-outline-variant rounded-lg px-3 py-2 font-caption text-caption text-on-surface placeholder:text-outline-variant focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all" placeholder="e.g. Background" type="text" value="Background"/>
+</div>
+<div class="col-span-6">
+<input class="w-full bg-surface-container-lowest border border-outline-variant rounded-lg px-3 py-2 font-caption text-caption text-on-surface placeholder:text-outline-variant focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all" placeholder="e.g. Obsidian Void" type="text"/>
+</div>
+<div class="col-span-1 flex justify-center">
+<button class="text-outline-variant hover:text-error transition-colors p-1">
+<span class="material-symbols-outlined text-[20px]">delete</span>
+</button>
+</div>
+</div>
+<!-- Attribute Row 2 -->
+<div class="grid grid-cols-12 gap-3 items-center">
+<div class="col-span-5">
+<input class="w-full bg-surface-container-lowest border border-outline-variant rounded-lg px-3 py-2 font-caption text-caption text-on-surface placeholder:text-outline-variant focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all" placeholder="Type" type="text" value="Rarity"/>
+</div>
+<div class="col-span-6">
+<input class="w-full bg-surface-container-lowest border border-outline-variant rounded-lg px-3 py-2 font-caption text-caption text-on-surface placeholder:text-outline-variant focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all" placeholder="Value" type="text" value="Legendary"/>
+</div>
+<div class="col-span-1 flex justify-center">
+<button class="text-outline-variant hover:text-error transition-colors p-1">
+<span class="material-symbols-outlined text-[20px]">delete</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Action Footer inside Card -->
+<div class="mt-8 pt-6 border-t border-white/5 flex justify-end">
+<button class="px-8 py-4 rounded-xl bg-gradient-to-r from-primary to-inverse-primary text-on-primary font-label-mono text-label-mono flex items-center gap-2 hover:opacity-90 transition-opacity shadow-[0_0_20px_rgba(124,58,237,0.4)]">
+                        Continue to Metadata
+                        <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</main>
+</body></html>
